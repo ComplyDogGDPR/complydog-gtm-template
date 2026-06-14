@@ -1,0 +1,4 @@
+homepage: https://complydog.com
+versions:
+  - sha: ""
+    changeNotes: "Initial release. Loads the ComplyDog consent banner and integrates Google Consent Mode v2, setting consent defaults to denied and updating ad and analytics signals based on the visitor's cookie choices."
