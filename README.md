@@ -1,10 +1,10 @@
-# ComplyDog Consent Mode Template for Google Tag Manager
+# ComplyDog CMP Template for Google Tag Manager
 
 A Google Tag Manager custom template that loads the ComplyDog cookie consent banner and wires up Google Consent Mode v2 inside GTM. It sets consent defaults before any other tag runs and updates consent signals automatically based on the visitor's banner choices.
 
 ## Setup
 
-1. Add the **ComplyDog Consent Mode** tag to your container from the Community Template Gallery.
+1. Add the **ComplyDog CMP** tag to your container from the Community Template Gallery.
 2. Enter your ComplyDog **Campaign ID**, found in your ComplyDog dashboard.
 3. Set the tag to fire on the **Consent Initialization - All Pages** trigger. This ensures consent defaults are set before any other tag runs.
 
