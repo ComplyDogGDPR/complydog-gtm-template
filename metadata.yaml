@@ -1,4 +1,5 @@
 homepage: https://complydog.com
+documentation: https://github.com/ComplyDogGDPR/complydog-gtm-template
 versions:
   - sha: "79bb0467077da7080fbf9918c1a66ba5522903bc"
     changeNotes: "Initial release. Loads the ComplyDog consent banner and integrates Google Consent Mode v2, setting consent defaults to denied and updating ad and analytics signals based on the visitor's cookie choices."

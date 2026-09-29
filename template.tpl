@@ -14,6 +14,10 @@ ___INFO___
   "version": 1,
   "securityGroups": [],
   "displayName": "ComplyDog CMP",
+  "categories": [
+    "TAG_MANAGEMENT",
+    "UTILITY"
+  ],
   "brand": {
     "id": "complydog",
     "displayName": "ComplyDog",
@@ -34,6 +38,293 @@ ___TEMPLATE_PARAMETERS___
     "name": "campaignId",
     "displayName": "ComplyDog campaign ID",
     "simpleValueType": true
+  },
+  {
+    "type": "GROUP",
+    "name": "defaultConsentGroup",
+    "displayName": "Default consent state (all regions)",
+    "groupStyle": "ZIPPY_OPEN",
+    "subParams": [
+      {
+        "type": "SELECT",
+        "name": "ad_storage",
+        "displayName": "ad_storage",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          },
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "ad_user_data",
+        "displayName": "ad_user_data",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          },
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "ad_personalization",
+        "displayName": "ad_personalization",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          },
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "analytics_storage",
+        "displayName": "analytics_storage",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          },
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "functionality_storage",
+        "displayName": "functionality_storage",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          },
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "personalization_storage",
+        "displayName": "personalization_storage",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          },
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "denied"
+      },
+      {
+        "type": "SELECT",
+        "name": "security_storage",
+        "displayName": "security_storage",
+        "macrosInSelect": false,
+        "selectItems": [
+          {
+            "value": "denied",
+            "displayValue": "Denied"
+          },
+          {
+            "value": "granted",
+            "displayValue": "Granted"
+          }
+        ],
+        "simpleValueType": true,
+        "defaultValue": "granted"
+      }
+    ]
+  },
+  {
+    "type": "GROUP",
+    "name": "regionalGroup",
+    "displayName": "Regional overrides",
+    "groupStyle": "ZIPPY_OPEN",
+    "subParams": [
+      {
+        "type": "SIMPLE_TABLE",
+        "name": "regionalSettings",
+        "displayName": "Region-specific default consent state",
+        "simpleTableColumns": [
+          {
+            "type": "TEXT",
+            "name": "regions",
+            "displayName": "Regions",
+            "defaultValue": "",
+            "valueValidators": [
+              {
+                "type": "NON_EMPTY"
+              }
+            ]
+          },
+          {
+            "type": "SELECT",
+            "name": "ad_storage",
+            "displayName": "ad_storage",
+            "selectItems": [
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              },
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              }
+            ],
+            "defaultValue": "denied"
+          },
+          {
+            "type": "SELECT",
+            "name": "ad_user_data",
+            "displayName": "ad_user_data",
+            "selectItems": [
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              },
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              }
+            ],
+            "defaultValue": "denied"
+          },
+          {
+            "type": "SELECT",
+            "name": "ad_personalization",
+            "displayName": "ad_personalization",
+            "selectItems": [
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              },
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              }
+            ],
+            "defaultValue": "denied"
+          },
+          {
+            "type": "SELECT",
+            "name": "analytics_storage",
+            "displayName": "analytics_storage",
+            "selectItems": [
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              },
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              }
+            ],
+            "defaultValue": "denied"
+          },
+          {
+            "type": "SELECT",
+            "name": "functionality_storage",
+            "displayName": "functionality_storage",
+            "selectItems": [
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              },
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              }
+            ],
+            "defaultValue": "denied"
+          },
+          {
+            "type": "SELECT",
+            "name": "personalization_storage",
+            "displayName": "personalization_storage",
+            "selectItems": [
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              },
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              }
+            ],
+            "defaultValue": "denied"
+          },
+          {
+            "type": "SELECT",
+            "name": "security_storage",
+            "displayName": "security_storage",
+            "selectItems": [
+              {
+                "value": "denied",
+                "displayValue": "Denied"
+              },
+              {
+                "value": "granted",
+                "displayValue": "Granted"
+              }
+            ],
+            "defaultValue": "granted"
+          }
+        ],
+        "newRowButtonText": "Add region override",
+        "help": "Default consent state for specific regions. Enter one or more ISO 3166-2 codes, comma separated (for example: ES, DE, US-CA). Regions listed here override the default above; any region not listed falls back to it. Google applies the most specific match."
+      }
+    ]
+  },
+  {
+    "type": "TEXT",
+    "name": "waitForUpdate",
+    "displayName": "Wait for update (milliseconds)",
+    "simpleValueType": true,
+    "defaultValue": 500,
+    "valueValidators": [
+      {
+        "type": "POSITIVE_NUMBER"
+      }
+    ],
+    "help": "How long Google waits for the visitor's banner choice before proceeding with the default state."
   }
 ]
 
@@ -47,6 +338,7 @@ const setInWindow = require('setInWindow');
 const copyFromWindow = require('copyFromWindow');
 const callLater = require('callLater');
 const gtagSet = require('gtagSet');
+const makeInteger = require('makeInteger');
 
 const campaignId = data.campaignId;
 const WIDGET_VERSION = '2.0.0';
@@ -56,17 +348,54 @@ gtagSet('developer_id.dY2RiMD', true);
 
 
 
-// 1. Consent Mode defaults — denied before anything loads
-setDefaultConsentState({
-  ad_storage: 'denied',
-  ad_user_data: 'denied',
-  ad_personalization: 'denied',
-  analytics_storage: 'denied',
-  functionality_storage: 'denied',
-  personalization_storage: 'denied',
-  security_storage: 'granted',
-  wait_for_update: 500
-});
+// 1. Consent Mode defaults - set before anything else loads.
+//    The global state below applies everywhere; regional rows configured in the
+//    tag UI override it for the regions they name.
+const waitForUpdate = makeInteger(data.waitForUpdate || 500);
+
+const asSignal = function (value, fallback) {
+  if (value === 'granted') return 'granted';
+  if (value === 'denied') return 'denied';
+  return fallback;
+};
+
+const buildState = function (src) {
+  return {
+    ad_storage: asSignal(src.ad_storage, 'denied'),
+    ad_user_data: asSignal(src.ad_user_data, 'denied'),
+    ad_personalization: asSignal(src.ad_personalization, 'denied'),
+    analytics_storage: asSignal(src.analytics_storage, 'denied'),
+    functionality_storage: asSignal(src.functionality_storage, 'denied'),
+    personalization_storage: asSignal(src.personalization_storage, 'denied'),
+    security_storage: asSignal(src.security_storage, 'granted'),
+    wait_for_update: waitForUpdate
+  };
+};
+
+const parseRegions = function (value) {
+  const codes = [];
+  if (!value) return codes;
+  const parts = value.split(',');
+  for (let i = 0; i < parts.length; i++) {
+    const code = parts[i].trim();
+    if (code) codes.push(code);
+  }
+  return codes;
+};
+
+// Global fallback for every region without an explicit override.
+setDefaultConsentState(buildState(data));
+
+// Region-specific defaults. Google applies the most specific match.
+const regionalSettings = data.regionalSettings || [];
+for (let i = 0; i < regionalSettings.length; i++) {
+  const regions = parseRegions(regionalSettings[i].regions);
+  if (regions.length) {
+    const state = buildState(regionalSettings[i]);
+    state.region = regions;
+    setDefaultConsentState(state);
+  }
+}
 
 // 2. Map ComplyDog categories -> Google signals
 const mapConsent = function (c) {
@@ -510,7 +839,25 @@ scenarios:
 - name: Test
   code: |-
     const mockData = {
-      campaignId: 'xp8m11'
+      campaignId: 'xp8m11',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'denied',
+      personalization_storage: 'denied',
+      security_storage: 'granted',
+      waitForUpdate: 500,
+      regionalSettings: [{
+        regions: 'US-CA, ES',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
+        security_storage: 'granted'
+      }]
     };
 
     // injectScript won't really load in the sandbox — mock it to call onsuccess immediately
@@ -519,9 +866,6 @@ scenarios:
       assertThat(url).isStrictlyEqualTo('https://app.complydog.com/complydog.v2.js?v=2.0.0');
       onsuccess();
     });
-
-    // complydog SDK isn't present in the sandbox; copyFromWindow returns undefined,
-    // so the template falls back to the cdogReady listener — that's fine, no error.
 
     // Run the template
     runCode(mockData);
