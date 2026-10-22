@@ -1,5 +1,7 @@
 homepage: https://complydog.com
 documentation: https://github.com/ComplyDogGDPR/complydog-gtm-template
 versions:
+  - sha: "950ca55b0f9d171bac50fa4a969245e91edc8c13"
+    changeNotes: "Receives consent updates through the ComplyDog widget's onConsent callback instead of polling for the SDK, so returning visitors' saved choices are applied on load. Removes the read permission for the complydog global."
   - sha: "52e5a8ac18883a548cd5ac37c35d14fdab0c4152"
     changeNotes: "Initial release. Loads the ComplyDog consent banner and integrates Google Consent Mode v2, setting consent defaults to denied and updating ad and analytics signals based on the visitor's cookie choices."
