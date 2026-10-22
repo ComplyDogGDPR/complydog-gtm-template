@@ -335,8 +335,6 @@ const injectScript = require('injectScript');
 const setDefaultConsentState = require('setDefaultConsentState');
 const updateConsentState = require('updateConsentState');
 const setInWindow = require('setInWindow');
-const copyFromWindow = require('copyFromWindow');
-const callLater = require('callLater');
 const gtagSet = require('gtagSet');
 const makeInteger = require('makeInteger');
 
@@ -411,29 +409,19 @@ const mapConsent = function (c) {
   };
 };
 
-// 3. Try to subscribe to the ComplyDog SDK; retry briefly if not ready yet
-const trySubscribe = function (attemptsLeft) {
-  const sdk = copyFromWindow('complydog');
-  if (sdk && typeof sdk.subscribe === 'function') {
-    sdk.subscribe('consent', function (consent) {
-      updateConsentState(mapConsent(consent));
-    });
-    return;
+// 3. Set widget settings, then inject the widget. The widget calls onConsent
+//    on every consent change, and once on load for returning visitors.
+setInWindow('cdogSettings', {
+  campaignId: campaignId,
+  version: WIDGET_VERSION,
+  onConsent: function (consent) {
+    updateConsentState(mapConsent(consent));
   }
-  if (attemptsLeft > 0) {
-    callLater(function () { trySubscribe(attemptsLeft - 1); });
-  }
-};
-
-// 4. Set widget settings, then inject the widget
-setInWindow('cdogSettings', { campaignId: campaignId, version: WIDGET_VERSION }, true);
+}, true);
 
 const url = 'https://app.complydog.com/complydog.v2.js?v=' + WIDGET_VERSION;
 
-injectScript(url, function () {
-  trySubscribe(20);   // SDK should exist now; retry a few ticks just in case
-  data.gtmOnSuccess();
-}, data.gtmOnFailure, url);
+injectScript(url, data.gtmOnSuccess, data.gtmOnFailure, url);
 
 
 ___WEB_PERMISSIONS___
@@ -451,45 +439,6 @@ ___WEB_PERMISSIONS___
           "value": {
             "type": 2,
             "listItem": [
-              {
-                "type": 3,
-                "mapKey": [
-                  {
-                    "type": 1,
-                    "string": "key"
-                  },
-                  {
-                    "type": 1,
-                    "string": "read"
-                  },
-                  {
-                    "type": 1,
-                    "string": "write"
-                  },
-                  {
-                    "type": 1,
-                    "string": "execute"
-                  }
-                ],
-                "mapValue": [
-                  {
-                    "type": 1,
-                    "string": "complydog"
-                  },
-                  {
-                    "type": 8,
-                    "boolean": true
-                  },
-                  {
-                    "type": 8,
-                    "boolean": false
-                  },
-                  {
-                    "type": 8,
-                    "boolean": false
-                  }
-                ]
-              },
               {
                 "type": 3,
                 "mapKey": [
@@ -873,6 +822,7 @@ scenarios:
     // The tag should finish successfully
     assertApi('gtmOnSuccess').wasCalled();
     assertApi('setDefaultConsentState').wasCalled();
+    assertApi('setInWindow').wasCalled();
 
 
 ___NOTES___

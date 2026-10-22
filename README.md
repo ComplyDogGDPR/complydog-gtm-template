@@ -8,6 +8,10 @@ A Google Tag Manager custom template that loads the ComplyDog cookie consent ban
 2. Enter your ComplyDog **Campaign ID**, found in your ComplyDog dashboard.
 3. Set the tag to fire on the **Consent Initialization - All Pages** trigger. This ensures consent defaults are set before any other tag runs.
 
+The template works independently of the **Enable Google Consent Mode v2** toggle in the ComplyDog dashboard; it handles Consent Mode itself whether that toggle is on or off.
+
+If you use this template, do not also install the ComplyDog snippet on the same page. The template already loads the banner, and loading it twice will conflict.
+
 ## What it does
 
 On load, the template sets all consent signals to `denied` by default (with `security_storage` granted), then updates the following signals based on the user's choices in the ComplyDog banner:
